@@ -98,8 +98,6 @@ extern "C" {
         .name = "uart3",                                            \
         .Instance = USART3,                                         \
         .irq_type = USART3_IRQn,                                    \
-        .tx_pin_name = BSP_UART3_TX_PIN,                            \
-        .rx_pin_name = BSP_UART3_RX_PIN,                            \
     }
 #endif /* UART3_CONFIG */
 

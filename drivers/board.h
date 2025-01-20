@@ -48,6 +48,33 @@ extern "C"
 
 /*-------------------------- CLOCK CONFIG END --------------------------*/
 
+/*-------------------------- USER DEFINE --------------------------------*/
+
+#define BSP_USING_DJI_MOTOR
+#define BSP_USING_DWT
+#define BSP_USING_HT_MOTOR
+#define BSP_USING_LK_MOTOR
+#define BSP_USING_PS_MSG
+#define BSP_USING_IST8310
+#define BSP_USING_MAG
+#define BSP_USING_IMU
+#define BSP_USING_RC_SBUS
+#define BSP_USING_LEG
+
+#define BSP_USING_PID
+#define BSP_USING_QUATERNIONESF
+#define BSP_USING_KALMAN_FILTER
+#define BSP_USING_RAMP
+#define BSP_USING_BMI088
+
+
+
+
+#define BSP_USING_PWM1
+
+
+/*-------------------------- USER DEFINE --------------------------------*/
+
 /*-------------------------- UART CONFIG BEGIN --------------------------*/
 
 /** After configuring corresponding UART or UART DMA, you can use it.
@@ -72,6 +99,11 @@ extern "C"
 #define BSP_UART1_RX_PIN       "PA10"
 #define BSP_UART1_TX_BUFSIZE  256
 #define BSP_UART1_RX_BUFSIZE  256
+
+#define BSP_USING_UART3
+#define BSP_UART3_RX_USING_DMA
+#define BSP_UART3_TX_BUFSIZE  256
+#define BSP_UART3_RX_BUFSIZE  256
 /*-------------------------- UART CONFIG END --------------------------*/
 
 /*-------------------------- I2C CONFIG BEGIN --------------------------*/
@@ -88,10 +120,10 @@ extern "C"
  *                             #define BSP_I2C1_SDA_PIN    GET_PIN(port, pin)   ->   GET_PIN(C, 12)
  */
 
-/*#define BSP_USING_I2C1*/
+#define BSP_USING_I2C1
 #ifdef BSP_USING_I2C1
-#define BSP_I2C1_SCL_PIN    GET_PIN(port, pin)
-#define BSP_I2C1_SDA_PIN    GET_PIN(port, pin)
+#define BSP_I2C1_SCL_PIN    GET_PIN(B, 1)
+#define BSP_I2C1_SDA_PIN    GET_PIN(B, 2)
 #endif
 
 /*#define BSP_USING_I2C2*/
@@ -117,8 +149,8 @@ extern "C"
  * STEP 4, modify your stm32xxxx_hal_config.h file to support spi peripherals. define macro related to the peripherals
  *                 such as     #define HAL_SPI_MODULE_ENABLED
  */
-
-/*#define BSP_USING_SPI1*/
+#define BSP_USING_SPI
+#define BSP_USING_SPI1
 /*#define BSP_USING_SPI2*/
 /*#define BSP_USING_SPI3*/
 
