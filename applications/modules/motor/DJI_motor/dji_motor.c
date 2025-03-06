@@ -180,7 +180,7 @@ static void decode_dji_motor(dji_motor_object_t *motor, uint8_t *data)
  * @param id 接收到的报文的id
  * @param data 接收到的报文的数据
  */
-void dji_motot_rx_callback(rt_device_t dev, uint32_t id, uint8_t *data){
+void dji_motor_rx_callback(rt_device_t dev, uint32_t id, uint8_t *data){
     // 找到对应的实例后再调用decode_dji_motor进行解析
     for (size_t i = 0; i < idx; ++i)
     {
@@ -242,7 +242,7 @@ void dji_motor_control()
             }
             if (size == 0)
             {
-                LOG_W("can dev write data failed!");
+                // LOG_W("can dev write data failed!");
             }
         }
     }

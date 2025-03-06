@@ -19,7 +19,7 @@
 #include <board.h>
 #ifdef BSP_USING_CAN
 #include "drv_can.h"
-
+#include "rtconfig.h"
 #define LOG_TAG    "drv_can"
 #include <drv_log.h>
 
@@ -146,13 +146,13 @@ static rt_err_t _can_config(struct rt_can_device *can, struct can_configure *cfg
     case RT_CAN_MODE_NORMAL:
         drv_can->CanHandle.Init.Mode = CAN_MODE_NORMAL;
         break;
-    case RT_CAN_MODE_LISEN:
+    case RT_CAN_MODE_LISTEN:
         drv_can->CanHandle.Init.Mode = CAN_MODE_SILENT;
         break;
     case RT_CAN_MODE_LOOPBACK:
         drv_can->CanHandle.Init.Mode = CAN_MODE_LOOPBACK;
         break;
-    case RT_CAN_MODE_LOOPBACKANLISEN:
+    case RT_CAN_MODE_LOOPBACKANLISTEN:
         drv_can->CanHandle.Init.Mode = CAN_MODE_SILENT_LOOPBACK;
         break;
     }
@@ -330,13 +330,13 @@ static rt_err_t _can_control(struct rt_can_device *can, int cmd, void *arg)
             /* get default filter */
             for (int i = 0; i < filter_cfg->count; i++)
             {
-                if (filter_cfg->items[i].hdr == -1)
+                if (filter_cfg->items[i].hdr_bank == -1)
                 {
                     drv_can->FilterConfig.FilterBank = i;
                 }
                 else
                 {
-                    drv_can->FilterConfig.FilterBank = filter_cfg->items[i].hdr;
+                    drv_can->FilterConfig.FilterBank = filter_cfg->items[i].hdr_bank;
                 }
                  /**
                  * ID     | CAN_FxR1[31:24] | CAN_FxR1[23:16] | CAN_FxR1[15:8] | CAN_FxR1[7:0]       |
@@ -396,9 +396,9 @@ static rt_err_t _can_control(struct rt_can_device *can, int cmd, void *arg)
     case RT_CAN_CMD_SET_MODE:
         argval = (rt_uint32_t) arg;
         if (argval != RT_CAN_MODE_NORMAL &&
-                argval != RT_CAN_MODE_LISEN &&
+                argval != RT_CAN_MODE_LISTEN &&
                 argval != RT_CAN_MODE_LOOPBACK &&
-                argval != RT_CAN_MODE_LOOPBACKANLISEN)
+                argval != RT_CAN_MODE_LOOPBACKANLISTEN)
         {
             return -RT_ERROR;
         }
@@ -607,12 +607,12 @@ static int _can_recvmsg(struct rt_can_device *can, void *buf, rt_uint32_t fifo)
     /* get hdr */
     if (hcan->Instance == CAN1)
     {
-        pmsg->hdr = (rxheader.FilterMatchIndex + 1) >> 1;
+        pmsg->hdr_index = (rxheader.FilterMatchIndex + 1) >> 1;
     }
 #ifdef CAN2
     else if (hcan->Instance == CAN2)
     {
-       pmsg->hdr = (rxheader.FilterMatchIndex >> 1) + 14;
+       pmsg->hdr_index = (rxheader.FilterMatchIndex >> 1) + 14;
     }
 #endif
 

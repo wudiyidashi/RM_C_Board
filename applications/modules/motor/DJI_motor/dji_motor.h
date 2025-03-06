@@ -105,6 +105,6 @@ void dji_motor_enable(dji_motor_object_t *motor);
  * @param id 接收到的报文的id
  * @param data 接收到的报文的数据
  */
-void dji_motot_rx_callback(rt_device_t dev, uint32_t id, uint8_t *data);
+void dji_motor_rx_callback(rt_device_t dev, uint32_t id, uint8_t *data);
 
 #endif /* _DJI_MOTOR_H */

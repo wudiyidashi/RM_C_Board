@@ -12,7 +12,7 @@
 #include "rm_task.h"
 
 #define DBG_TAG   "rm.task"
-#define DBG_LVL DBG_INFO
+#define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
 static publisher_t *pub_gim, *pub_chassis, *pub_shoot;
@@ -141,7 +141,9 @@ static void remote_to_cmd(void)
     gim_cmd.pitch += rc_now->ch3 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT;
     /* 限制云台角度 */
     VAL_LIMIT(gim_cmd.pitch, PIT_ANGLE_MIN, PIT_ANGLE_MAX);
-
+    
+    // 打印云台命令
+    // LOG_D("Yaw: %f, Pitch: %f", gim_cmd.yaw, gim_cmd.pitch);
     /*-------------------------------------------------底盘_云台状态机--------------------------------------------------------------*/
     // 左拨杆sw2为上时，底盘和云台均RELAX；为中时，云台为GYRO；为下时，云台为AUTO。
     // 右拨杆sw1为上时，底盘为FOLLOW；为中时，底盘为OPEN；为下时，底盘为SPIN。

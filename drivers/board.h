@@ -52,8 +52,8 @@ extern "C"
 
 #define BSP_USING_DJI_MOTOR
 #define BSP_USING_DWT
-#define BSP_USING_HT_MOTOR
-#define BSP_USING_LK_MOTOR
+//#define BSP_USING_HT_MOTOR
+//#define BSP_USING_LK_MOTOR
 #define BSP_USING_PS_MSG
 #define BSP_USING_IST8310
 #define BSP_USING_MAG
@@ -67,9 +67,11 @@ extern "C"
 #define BSP_USING_RAMP
 #define BSP_USING_BMI088
 
+#define BSP_CHASSIS_MECANUM_MODE
 
-
-
+#define BSP_USING_CAN
+#define BSP_USING_CAN1
+#define BSP_USING_CAN2
 #define BSP_USING_PWM1
 
 
@@ -194,6 +196,19 @@ extern "C"
  *                 such as     #define HAL_TIM_MODULE_ENABLED
  *
  */
+#define BSP_USING_PWM1
+#define BSP_USING_PWM1_CH1
+#define BSP_USING_PWM1_CH2
+#define BSP_USING_PWM1_CH3
+#define BSP_USING_PWM1_CH4
+#define BSP_USING_PWM5
+#define BSP_USING_PWM5_CH1
+#define BSP_USING_PWM5_CH2
+#define BSP_USING_PWM5_CH3
+#define BSP_USING_PWM8
+#define BSP_USING_PWM8_CH1
+#define BSP_USING_PWM8_CH2
+#define BSP_USING_PWM8_CH3
 
 /*#define BSP_USING_PWM1*/
 /*#define BSP_USING_PWM2*/

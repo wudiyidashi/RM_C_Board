@@ -1,7 +1,17 @@
 [
  {
+  "path": "/packages/tools/SEGGER_RTT", 
+  "ver": "latest", 
+  "name": "SEGGER_RTT"
+ }, 
+ {
   "path": "/packages/tools/vconsole", 
   "ver": "latest", 
   "name": "VCONSOLE"
+ }, 
+ {
+  "path": "/packages/system/enhanced-kservice/rt_vsnprintf_full", 
+  "ver": "latest", 
+  "name": "RT_VSNPRINTF_FULL"
  }
 ]

@@ -382,7 +382,9 @@ static rt_err_t stm32_hw_pwm_init(struct stm32_pwm *device)
 #if defined(SOC_SERIES_STM32F1) || defined(SOC_SERIES_STM32L4)
     tim->Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
 #endif
-
+     //时钟配置,调用位置在此处，尽量放在前面，经过测试，放在后面就失效了
+    HAL_TIM_PWM_MspInit(tim);
+    HAL_TIM_OC_MspInit(tim);
     if (HAL_TIM_Base_Init(tim) != HAL_OK)
     {
         LOG_E("%s pwm init failed", device->name);

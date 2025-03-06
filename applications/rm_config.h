@@ -102,9 +102,9 @@
 #define CENTER_ECD_PITCH 1420         //云台pitch轴编码器归中值
 
 /* pitch轴最大仰角 */
-#define PIT_ANGLE_MAX        31.5f
+#define PIT_ANGLE_MAX        135.f
 /* pitch轴最大俯角 */
-#define PIT_ANGLE_MIN        -32.9f
+#define PIT_ANGLE_MIN        -135.f
 
 /* 云台控制周期 (ms) */
 #define GIMBAL_PERIOD 1
